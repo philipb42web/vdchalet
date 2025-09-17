@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>For Sale • Serene Laurentian Retreat • Val‑David, QC</title>
+  <meta name="description" content="Four-season retreat in Val-David, Quebec. Private wooded lot, detached garage and workshop, minutes from village amenities and outdoor trails." />
+  <meta name="theme-color" content="#145c3a" />
+  <link rel="alternate" hreflang="fr-CA" href="index-fr.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="main-header" role="banner">
+    <div class="logo">Val‑David Estate</div>
+    <nav class="main-nav" aria-label="Primary">
+      <ul>
+        <li><a href="#about">The Property</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#location">Location</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="lang-switcher" aria-label="Language">
+      <a href="index.html" aria-current="page" class="active">EN</a><span>|</span>
+      <a href="index-fr.html" hreflang="fr-CA">FR</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-image-container">
+        <img src="./images/housegarage.jpg" alt="House and detached garage surrounded by Laurentian forest" decoding="async" />
+        <span class="hero-overlay" aria-hidden="true"></span>
+      </div>
+      <div class="hero-text container">
+        <h1>Your Laurentian Escape</h1>
+        <p>An exceptional four‑season property in the heart of Val‑David, Quebec.</p>
+        <a href="#about" class="cta-button">Explore the Property</a>
+      </div>
+    </section>
+
+    <section id="about" class="content-section">
+      <div class="container">
+        <h2>A Life Immersed in Nature</h2>
+        <p class="lead-text">
+          Rustic charm meets modern comfort. This meticulously maintained home sits on a private wooded lot with frequent wildlife, quiet evenings, and trail access minutes away.
+        </p>
+      </div>
+    </section>
+
+    <section id="features" class="content-section-dark">
+      <div class="container">
+        <h2>Features</h2>
+        <div class="features-grid">
+          <article class="feature-item glass">
+            <h3>Spacious Living</h3>
+            <p>Open‑concept layout with vaulted ceilings and a wood‑burning stove for warm gatherings.</p>
+          </article>
+          <article class="feature-item glass">
+            <h3>Private Wooded Lot</h3>
+            <p>Your own slice of forest with full privacy and direct access to the outdoors.</p>
+          </article>
+          <article class="feature-item glass">
+            <h3>Garage & Workshop</h3>
+            <p>Detached, powered garage for vehicles, gear, and a dedicated workshop.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="gallery-section">
+      <div class="container narrow">
+        <h2>Gallery</h2>
+      </div>
+      <div class="gallery-grid">
+        <figure class="gallery-item">
+          <img src="./images/housegarage.jpg" alt="Home and garage among trees" loading="lazy" decoding="async" />
+        </figure>
+        <figure class="gallery-item">
+          <img src="./images/autumnhouse.jpg" alt="Autumn colors across the property" loading="lazy" decoding="async" />
+        </figure>
+        <figure class="gallery-item">
+          <img src="./images/deer.jpg" alt="Deer grazing in sunlit yard" loading="lazy" decoding="async" />
+        </figure>
+      </div>
+    </section>
+
+    <section id="location" class="content-section">
+      <div class="container">
+        <h2>The Heart of the Laurentians</h2>
+        <p class="lead-text">
+          Minutes to Val‑David’s galleries, markets, and climbing. Easy access to skiing, hiking, and cycling.
+        </p>
+        <div class="map-container">
+          <iframe
+            title="Map of Val‑David, QC"
+            src="https://www.google.com/maps?q=Val-David,QC&z=12&output=embed&hl=en"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+          </iframe>
+        </div>
+       <!-- REPLACE this block -->
+<!-- <p class="map-cta">
+  <a class="text-link" href="https://www.google.com/maps?q=Val-David,QC" target="_blank" rel="noopener">Open in Google Maps</a>
+</p> -->
+
+<!-- WITH -->
+<div class="location-links">
+  <a class="pill-link map" href="https://www.google.com/maps?q=Val-David,QC" target="_blank" rel="noopener">
+    Open in Google Maps
+  </a>
+  <a class="pill-link ext" href="https://mrclaurentides.qc.ca/val-david/" target="_blank" rel="noopener" aria-label="Explore Val-David nature and activities (opens in new tab)">
+    Explore Val‑David nature <span class="ext-icon" aria-hidden="true">↗</span>
+  </a>
+</div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="main-footer">
+    <div class="container">
+      <h2>Begin Your Next Chapter</h2>
+      <p>For inquiries or to schedule a private viewing, contact us.</p>
+      <a href="mailto:your-email@example.com?subject=Inquiry%20about%20Val-David%20Property" class="cta-button">Inquire Now</a>
+      <p class="tiny">© <span id="y"></span> Val‑David Estate</p>
+    </div>
+  </footer>
+
+  <dialog id="lightbox" aria-label="Image viewer">
+    <button class="lightbox-close" aria-label="Close">✕</button>
+    <img src="" alt="" />
+  </dialog>
+
+  <script src="js/script.js" defer></script>
+</body>
+</html>
