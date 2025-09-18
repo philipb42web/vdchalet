@@ -71,9 +71,13 @@ body{
 
 /* fallback image to avoid any green flash */
 .hero-image-container{
-  position:absolute;inset:0;overflow:hidden;
-  background:#0f3d2e url("images/main1.png") center/cover no-repeat;
+  position:absolute; inset:0; overflow:hidden;
+  /* no solid color here — the inline background-image above paints immediately */
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
 }
+
 
 /* overlay hidden until first image paints */
 .hero-image-container .hero-overlay{position:absolute;inset:0;opacity:0;transition:opacity .6s ease}
