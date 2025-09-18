@@ -28,37 +28,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Hero cross‑fade: main1.jpg -> housegarage.jpg ---
   // --- Hero cross-fade: main1.jpg -> housegarage.jpg (slower) ---
+// --- Hero cross‑fade: show main1, then smooth fade to housegarage ---
 (function heroSwap(){
   const box = document.querySelector('.hero-image-container');
   if (!box) return;
+  const [img1, img2] = box.querySelectorAll('img.bg');
+  if (!img1 || !img2) return;
 
-  // expects two imgs with classes: img.bg.bg-1 (main1) and img.bg.bg-2 (housegarage)
-  const imgs = box.querySelectorAll('img.bg');
-  if (imgs.length < 2) return;
+  const initialShow = 2800;   // time to hold main1 before fade (ms)
+  const safetyMax   = 8000;   // absolute fallback
 
-  // Tunable timings (ms)
-  const initialShow = 3000; // how long main1 stays fully visible before fading
-  const safetyMax = 7000;   // fallback if images don't decode
+  // mark overlay "ready" as soon as the first image can paint (removes green flash)
+  const markReady = () => box.classList.add('ready');
 
-  let ready = 0;
-  const mark = () => {
-    ready += 1;
-    if (ready === imgs.length) {
-      // wait initialShow then trigger CSS swap (which uses 1600ms transition)
-      setTimeout(() => box.classList.add('swap'), initialShow);
-    }
+  const whenPainted = (img, cb) => {
+    if (img.decode) img.decode().then(cb, cb);
+    else if (img.complete) cb();
+    else img.addEventListener('load', cb, { once:true });
   };
 
-  imgs.forEach(img => {
-    // try to use modern decode() for best UX
-    if (img.decode) img.decode().then(mark, mark);
-    else if (img.complete) mark();
-    else img.addEventListener('load', mark, { once: true });
-  });
+  whenPainted(img1, markReady);   // overlay appears only after this
+  // start fade after BOTH images can paint, then wait initialShow
+  Promise.all([
+    new Promise(r => whenPainted(img1, r)),
+    new Promise(r => whenPainted(img2, r))
+  ]).then(() => setTimeout(() => box.classList.add('swap'), initialShow));
 
-  // safety: ensure swap even if decode/load stalls
-  setTimeout(() => box.classList.add('swap'), Math.max(initialShow, safetyMax));
+  // safety: ensure swap even if decode stalls
+  setTimeout(() => { box.classList.add('ready'); box.classList.add('swap'); }, safetyMax);
 })();
+
 
   // --- end hero cross‑fade ---
 

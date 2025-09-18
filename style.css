@@ -65,49 +65,35 @@ body{
 .main-nav a:hover::after{ transform:scaleX(1) }
 
 /* Full‑bleed hero and cross‑fade */
-.hero{
-  position:relative;display:grid;place-items:center;
-  min-height:100vh;             /* fill first page */
-  min-height:100svh;            /* mobile safe */
-  margin:0;text-align:center;color:#fff;
+/* full-bleed hero */
+.hero{position:relative;display:grid;place-items:center;min-height:100dvh;margin:0;color:#fff;text-align:center}
+
+/* fallback image so no green flash */
+.hero-image-container{
+  position:absolute;inset:0;overflow:hidden;
+  background:#0f3d2e url("images/main1.jpg") center/cover no-repeat;
 }
-@supports(height:100dvh){ .hero{ min-height:100dvh } }
 
-/* hero crossfade (replace any previous .hero-image-container img rules for .bg images) */
-.hero-image-container { position:absolute; inset:0; overflow:hidden; }
-.hero-image-container img.bg{
-  position:absolute; inset:0;
-  width:100%; height:100%; object-fit:cover;
-  opacity:0;
-  transition:opacity 1600ms cubic-bezier(.22,.9,.35,1);
-  will-change: opacity;
-}
-.hero-image-container img.bg.bg-1{ opacity:1; z-index:1; }
-.hero-image-container img.bg.bg-2{ z-index:0; }
-
-/* when .swap is added the second image fades in and the first fades out */
-.hero-image-container.swap img.bg.bg-1{ opacity:0; z-index:0; }
-.hero-image-container.swap img.bg.bg-2{ opacity:1; z-index:1; }
-
-
-.hero-overlay{
-  position:absolute;inset:0;
-  background:radial-gradient(60% 70% at 50% 40%, rgba(47,170,105,.55), rgba(11,46,36,.88));
+/* overlay is hidden until first image is ready */
+.hero-image-container .hero-overlay{position:absolute;inset:0;opacity:0;transition:opacity .6s ease}
+.hero-image-container.ready .hero-overlay{
+  opacity:1;
+  background:radial-gradient(60% 70% at 50% 40%, rgba(47,170,105,.42), rgba(11,46,36,.78));
   mix-blend-mode:multiply;
 }
-.hero::after{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(420px 280px at var(--mx,50%) var(--my,35%), rgba(47,170,105,.13), transparent 60%);
-}
-.hero-text{position:relative;z-index:1}
 
-/* prevent the next section from peeking on large screens */
-.gallery-section{padding-top:3rem}
-
-/* reduced‑motion users: no animated swap */
-@media (prefers-reduced-motion:reduce){
-  .hero-image-container .bg{transition:none}
+/* cross‑fade */
+.hero-image-container img.bg{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;
+  will-change:opacity;transition:opacity 2200ms cubic-bezier(.22,.61,.36,1);
 }
+.hero-image-container img.bg.bg-1{opacity:1}
+.hero-image-container.swap img.bg.bg-1{opacity:0}
+.hero-image-container.swap img.bg.bg-2{opacity:1}
+
+/* avoid peeking of next section */
+.hero + .gallery-section{margin-top:0}
+
 
 /* Buttons */
 .cta-button{
@@ -206,11 +192,11 @@ h2{
 /* Footer */
 .main-footer{
   background:linear-gradient(180deg,var(--green-800),var(--green-900));
-  color:#fff;text-align:center;padding:3.5rem 1rem;margin-top:2rem;
+  color:#fff;text-align:center;
+  padding:1.25rem 1rem;          /* reduced */
 }
-.main-footer h2{color:#fff;margin:0 0 .75rem}
-.main-footer p{max-width:640px;margin:.5rem auto 1rem}
-.tiny{opacity:.75;font-size:.85rem}
+.main-footer .tiny{margin:0;opacity:.85;font-size:.9rem}
+
 
 /* Lightbox with side-hover arrows */
 dialog#lightbox{
