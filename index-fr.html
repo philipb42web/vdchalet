@@ -6,6 +6,9 @@
   <title>À vendre • Paisible refuge laurentien • Val‑David, QC</title>
   <meta name="description" content="Propriété quatre saisons à Val‑David. Terrain boisé privé, garage et atelier détachés, à quelques minutes des services et des sentiers." />
   <meta name="theme-color" content="#145c3a" />
+  <link rel="preload" as="image" href="images/main1.jpg">
+  <link rel="preload" as="image" href="images/housegarage.jpg">
+
   <link rel="alternate" hreflang="en-CA" href="index.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -31,11 +34,13 @@
   </header>
 
   <main id="top">
-    <section class="hero">
-      <div class="hero-image-container">
-        <img src="./images/housegarage.jpg" alt="Maison et garage détaché dans la forêt laurentienne" decoding="async" />
-        <span class="hero-overlay" aria-hidden="true"></span>
-      </div>
+   <section class="hero">
+  <div class="hero-image-container">
+    <!-- first image shown, then fades to the current background -->
+    <img class="bg bg-1" src="images/main1.jpg" alt="" loading="eager" decoding="async" fetchpriority="high">
+    <img class="bg bg-2" src="images/housegarage.jpg" alt="House and detached garage in the Laurentians" loading="eager" decoding="async" fetchpriority="high">
+    <span class="hero-overlay" aria-hidden="true"></span>
+  </div>
       <div class="hero-text container">
         <p>Propriété quatre saisons d’exception au cœur de Val‑David, Québec.</p>
         <a href="#about" class="cta-button">Découvrir la propriété</a>

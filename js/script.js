@@ -26,6 +26,33 @@ document.addEventListener('DOMContentLoaded', () => {
     document.documentElement.style.setProperty('--my', e.clientY + 'px');
   }, { passive: true });
 
+  // --- Hero cross‑fade: main1.jpg -> housegarage.jpg ---
+  (function heroSwap(){
+    const box = document.querySelector('.hero-image-container');
+    if (!box) return;
+    const imgs = box.querySelectorAll('img.bg'); // expects .bg.bg-1 and .bg.bg-2 in HTML
+    if (imgs.length < 2) return;
+
+    let ready = 0;
+    const mark = () => {
+      ready += 1;
+      if (ready === imgs.length) {
+        // show main1 briefly, then fade to housegarage
+        setTimeout(() => box.classList.add('swap'), 1400);
+      }
+    };
+
+    imgs.forEach(img => {
+      if (img.decode) img.decode().then(mark, mark);
+      else if (img.complete) mark();
+      else img.addEventListener('load', mark, { once:true });
+    });
+
+    // safety: ensure swap even if decode/load stalls
+    setTimeout(() => box.classList.add('swap'), 4000);
+  })();
+  // --- end hero cross‑fade ---
+
   // Lightbox with navigation
   const dlg = document.getElementById('lightbox');
   const dlgImg = dlg.querySelector('img');

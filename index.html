@@ -6,6 +6,9 @@
   <title>For Sale • Serene Laurentian Retreat • Val‑David, QC</title>
   <meta name="description" content="Four-season retreat in Val-David, Quebec. Private wooded lot, detached garage and workshop, minutes from village amenities and outdoor trails." />
   <meta name="theme-color" content="#145c3a" />
+  <link rel="preload" as="image" href="images/main1.jpg">
+  <link rel="preload" as="image" href="images/housegarage.jpg">
+
   <link rel="alternate" hreflang="fr-CA" href="index-fr.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -35,16 +38,19 @@
   </header>
 
   <main id="top">
-    <section class="hero">
-      <div class="hero-image-container">
-        <img src="./images/housegarage.jpg" alt="House and detached garage surrounded by Laurentian forest" decoding="async" />
-        <span class="hero-overlay" aria-hidden="true"></span>
-      </div>
-      <div class="hero-text container">
-        <p>An exceptional four‑season property in the heart of Val‑David, Quebec.</p>
-        <a href="#about" class="cta-button">Explore the Property</a>
-      </div>
-    </section>
+   <section class="hero">
+  <div class="hero-image-container">
+    <!-- first image shown, then fades to the current background -->
+    <img class="bg bg-1" src="images/main1.jpg" alt="" loading="eager" decoding="async" fetchpriority="high">
+    <img class="bg bg-2" src="images/housegarage.jpg" alt="House and detached garage in the Laurentians" loading="eager" decoding="async" fetchpriority="high">
+    <span class="hero-overlay" aria-hidden="true"></span>
+  </div>
+  <div class="hero-text container">
+    <p>An exceptional four‑season property in the heart of Val‑David, Quebec.</p>
+    <a href="#gallery" class="cta-button">Explore the Property</a>
+  </div>
+</section>
+
 
   
 
