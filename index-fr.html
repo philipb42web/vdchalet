@@ -20,6 +20,7 @@
         <li><a href="#about">La propriété</a></li>
         <li><a href="#features">Caractéristiques</a></li>
         <li><a href="#gallery">Galerie</a></li>
+        <li><a href="#neighborhood">Environs</a></li>
         <li><a href="#location">Emplacement</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -47,7 +48,7 @@
       <div class="container">
         <h2>Une vie en pleine nature</h2>
         <p class="lead-text">
-          Le charme rustique rencontre le confort moderne. Demeure entretenue avec soin sur terrain boisé privé, faune abondante, soirées paisibles et accès rapide aux sentiers.
+          Charme rustique et confort moderne. Demeure entretenue sur terrain boisé privé, faune abondante et accès rapide aux sentiers.
         </p>
       </div>
     </section>
@@ -72,20 +73,32 @@
       </div>
     </section>
 
+    <!-- GALERIE (ajoute in1..in3) -->
     <section id="gallery" class="gallery-section">
       <div class="container narrow">
         <h2>Galerie</h2>
       </div>
       <div class="gallery-grid">
-        <figure class="gallery-item">
-          <img src="./images/housegarage.jpg" alt="Maison et garage parmi les arbres" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="gallery-item">
-          <img src="./images/autumnhouse.jpg" alt="Couleurs d’automne sur la propriété" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="gallery-item">
-          <img src="./images/deer.jpg" alt="Cerf broutant dans la cour ensoleillée" loading="lazy" decoding="async" />
-        </figure>
+        <figure class="gallery-item"><img src="./images/housegarage.jpg" alt="Maison et garage parmi les arbres" loading="lazy" decoding="async" /></figure>
+        <figure class="gallery-item"><img src="./images/autumnhouse.jpg" alt="Couleurs d’automne sur la propriété" loading="lazy" decoding="async" /></figure>
+        <figure class="gallery-item"><img src="./images/deer.jpg" alt="Cerf broutant dans la cour ensoleillée" loading="lazy" decoding="async" /></figure>
+        <figure class="gallery-item"><img src="./images/in1.png" alt="Vue forestière depuis la propriété" loading="lazy" decoding="async" /></figure>
+        <figure class="gallery-item"><img src="./images/in2.png" alt="Couloir avec arches et poêle à bois" loading="lazy" decoding="async" /></figure>
+        <figure class="gallery-item"><img src="./images/in3.png" alt="Mezzanine en bois avec porte cintrée" loading="lazy" decoding="async" /></figure>
+      </div>
+    </section>
+
+    <!-- ENVIRONS (même mise en page que la galerie) -->
+    <section id="neighborhood" class="gallery-section">
+      <div class="container narrow">
+        <h2>Découvrir les environs</h2>
+      </div>
+      <div class="gallery-grid">
+        <figure class="gallery-item"><img src="./images/p1.png" alt="Belvédère et sentier près de Val‑David" loading="lazy" decoding="async" /></figure>
+        <figure class="gallery-item"><img src="./images/p2.png" alt="Signalisation vers Mont‑Condor et Mont‑King" loading="lazy" decoding="async" /></figure>
+        <figure class="gallery-item"><img src="./images/p3.png" alt="Intersection forestière avec panneau Chalet‑Anne‑Piché" loading="lazy" decoding="async" /></figure>
+        <figure class="gallery-item"><img src="./images/p4.png" alt="Mur de granite du parc régional" loading="lazy" decoding="async" /></figure>
+        <figure class="gallery-item"><img src="./images/p5.png" alt="Falaises et racines le long du sentier" loading="lazy" decoding="async" /></figure>
       </div>
     </section>
 
@@ -93,7 +106,7 @@
       <div class="container">
         <h2>Au cœur des Laurentides</h2>
         <p class="lead-text">
-          À quelques minutes des galeries, marchés et sites d’escalade de Val‑David. Accès facile au ski, à la randonnée et au vélo.
+          À quelques minutes des galeries, marchés et sites d’escalade. Accès facile au ski, à la randonnée et au vélo.
         </p>
         <div class="map-container">
           <iframe
@@ -104,15 +117,10 @@
             allowfullscreen>
           </iframe>
         </div>
-      <div class="location-links">
-  <a class="pill-link map" href="https://www.google.com/maps?q=Val-David,QC&hl=fr" target="_blank" rel="noopener">
-    Ouvrir dans Google Maps
-  </a>
-  <a class="pill-link ext" href="https://mrclaurentides.qc.ca/val-david/" target="_blank" rel="noopener" aria-label="Découvrir la nature à Val-David (nouvel onglet)">
-    Découvrir la nature à Val‑David <span class="ext-icon" aria-hidden="true">↗</span>
-  </a>
-</div>
-
+        <div class="location-links">
+          <a class="pill-link map" href="https://www.google.com/maps?q=Val-David,QC&hl=fr" target="_blank" rel="noopener">Ouvrir dans Google Maps</a>
+          <a class="pill-link ext" href="https://mrclaurentides.qc.ca/val-david/" target="_blank" rel="noopener">Découvrir la nature à Val‑David <span class="ext-icon" aria-hidden="true">↗</span></a>
+        </div>
       </div>
     </section>
   </main>
@@ -126,9 +134,18 @@
     </div>
   </footer>
 
+    <!-- Visionneuse améliorée -->
   <dialog id="lightbox" aria-label="Visionneuse d’images">
+    <div class="hotzone left" aria-hidden="true"></div>
+    <div class="hotzone right" aria-hidden="true"></div>
     <button class="lightbox-close" aria-label="Fermer">✕</button>
+    <button class="lightbox-nav prev" aria-label="Précédent">‹</button>
+    <button class="lightbox-nav next" aria-label="Suivant">›</button>
     <img src="" alt="" />
+    <div class="lightbox-meta">
+      <span class="lightbox-caption"></span>
+      <span class="lightbox-count"></span>
+    </div>
   </dialog>
 
   <script src="js/script.js" defer></script>

@@ -20,6 +20,7 @@
         <li><a href="#about">The Property</a></li>
         <li><a href="#features">Features</a></li>
         <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#neighborhood">Neighborhood</a></li>
         <li><a href="#location">Location</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -72,20 +73,32 @@
       </div>
     </section>
 
+    <!-- GALLERY (adds in1..in3) -->
     <section id="gallery" class="gallery-section">
       <div class="container narrow">
         <h2>Gallery</h2>
       </div>
       <div class="gallery-grid">
-        <figure class="gallery-item">
-          <img src="./images/housegarage.jpg" alt="Home and garage among trees" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="gallery-item">
-          <img src="./images/autumnhouse.jpg" alt="Autumn colors across the property" loading="lazy" decoding="async" />
-        </figure>
-        <figure class="gallery-item">
-          <img src="./images/deer.jpg" alt="Deer grazing in sunlit yard" loading="lazy" decoding="async" />
-        </figure>
+        <figure class="gallery-item"><img src="./images/housegarage.jpg" alt="Home and garage among trees" loading="lazy" decoding="async" /></figure>
+        <figure class="gallery-item"><img src="./images/autumnhouse.jpg" alt="Autumn colors across the property" loading="lazy" decoding="async" /></figure>
+        <figure class="gallery-item"><img src="./images/deer.jpg" alt="Deer grazing in sunlit yard" loading="lazy" decoding="async" /></figure>
+        <figure class="gallery-item"><img src="./images/in1.png" alt="Forest view from the property" loading="lazy" decoding="async" /></figure>
+        <figure class="gallery-item"><img src="./images/in2.png" alt="Hallway with arches and wood stove" loading="lazy" decoding="async" /></figure>
+        <figure class="gallery-item"><img src="./images/in3.png" alt="Loft with pine walls and arched doorway" loading="lazy" decoding="async" /></figure>
+      </div>
+    </section>
+
+    <!-- NEIGHBORHOOD (same layout as main gallery) -->
+    <section id="neighborhood" class="gallery-section">
+      <div class="container narrow">
+        <h2>Explore the Surroundings</h2>
+      </div>
+      <div class="gallery-grid">
+        <figure class="gallery-item"><img src="./images/p1.png" alt="Forest trail and lookout near Val‑David" loading="lazy" decoding="async" /></figure>
+        <figure class="gallery-item"><img src="./images/p2.png" alt="Trail signage toward Mont‑Condor and Mont‑King" loading="lazy" decoding="async" /></figure>
+        <figure class="gallery-item"><img src="./images/p3.png" alt="Junction with Chalet‑Anne‑Piché sign" loading="lazy" decoding="async" /></figure>
+        <figure class="gallery-item"><img src="./images/p4.png" alt="Granite wall in the regional park" loading="lazy" decoding="async" /></figure>
+        <figure class="gallery-item"><img src="./images/p5.png" alt="Cliffs and roots along the trail" loading="lazy" decoding="async" /></figure>
       </div>
     </section>
 
@@ -104,21 +117,10 @@
             allowfullscreen>
           </iframe>
         </div>
-       <!-- REPLACE this block -->
-<!-- <p class="map-cta">
-  <a class="text-link" href="https://www.google.com/maps?q=Val-David,QC" target="_blank" rel="noopener">Open in Google Maps</a>
-</p> -->
-
-<!-- WITH -->
-<div class="location-links">
-  <a class="pill-link map" href="https://www.google.com/maps?q=Val-David,QC" target="_blank" rel="noopener">
-    Open in Google Maps
-  </a>
-  <a class="pill-link ext" href="https://mrclaurentides.qc.ca/val-david/" target="_blank" rel="noopener" aria-label="Explore Val-David nature and activities (opens in new tab)">
-    Explore Val‑David nature <span class="ext-icon" aria-hidden="true">↗</span>
-  </a>
-</div>
-
+        <div class="location-links">
+          <a class="pill-link map" href="https://www.google.com/maps?q=Val-David,QC" target="_blank" rel="noopener">Open in Google Maps</a>
+          <a class="pill-link ext" href="https://mrclaurentides.qc.ca/val-david/" target="_blank" rel="noopener">Explore Val‑David nature <span class="ext-icon" aria-hidden="true">↗</span></a>
+        </div>
       </div>
     </section>
   </main>
@@ -132,9 +134,18 @@
     </div>
   </footer>
 
+  <!-- Enhanced lightbox -->
   <dialog id="lightbox" aria-label="Image viewer">
+    <div class="hotzone left" aria-hidden="true"></div>
+    <div class="hotzone right" aria-hidden="true"></div>
     <button class="lightbox-close" aria-label="Close">✕</button>
+    <button class="lightbox-nav prev" aria-label="Previous">‹</button>
+    <button class="lightbox-nav next" aria-label="Next">›</button>
     <img src="" alt="" />
+    <div class="lightbox-meta">
+      <span class="lightbox-caption"></span>
+      <span class="lightbox-count"></span>
+    </div>
   </dialog>
 
   <script src="js/script.js" defer></script>
