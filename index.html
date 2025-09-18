@@ -6,8 +6,10 @@
   <title>For Sale • Serene Laurentian Retreat • Val‑David, QC</title>
   <meta name="description" content="Four-season retreat in Val-David, Quebec. Private wooded lot, detached garage and workshop, minutes from village amenities and outdoor trails." />
   <meta name="theme-color" content="#145c3a" />
-  <link rel="preload" as="image" href="images/main1.jpg">
-  <link rel="preload" as="image" href="images/housegarage.jpg">
+  <!-- use the real extension -->
+<link rel="preload" as="image" href="images/main1.png">
+<link rel="preload" as="image" href="images/housegarage.jpg">
+
 
   <link rel="alternate" hreflang="fr-CA" href="index-fr.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -40,9 +42,8 @@
   <main id="top">
    <section class="hero">
   <div class="hero-image-container">
-    <!-- first image shown, then fades to the current background -->
-    <img class="bg bg-1" src="images/main1.jpg" alt="" loading="eager" decoding="async" fetchpriority="high">
-    <img class="bg bg-2" src="images/housegarage.jpg" alt="House and detached garage in the Laurentians" loading="eager" decoding="async" fetchpriority="high">
+    <img class="bg bg-1" src="images/main1.png" alt="" loading="eager" fetchpriority="high" decoding="async">
+    <img class="bg bg-2" src="images/housegarage.jpg" alt="House and detached garage in the Laurentians" loading="eager" fetchpriority="high" decoding="async">
     <span class="hero-overlay" aria-hidden="true"></span>
   </div>
   <div class="hero-text container">
@@ -50,6 +51,7 @@
     <a href="#gallery" class="cta-button">Explore the Property</a>
   </div>
 </section>
+
 
 
   
