@@ -1,29 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Header hide-on-scroll
+  // Header hide + solid after hero
   let last = 0;
   const header = document.querySelector('.main-header');
-  window.addEventListener('scroll', () => {
+  const hero = document.querySelector('.hero');
+  function onScroll(){
     const y = window.pageYOffset || document.documentElement.scrollTop;
     header.style.top = (y > last && y > 120) ? '-80px' : '0';
     last = y <= 0 ? 0 : y;
-  }, { passive: true });
+    const solid = y > ((hero?.offsetHeight || 0) - 64);
+    header.classList.toggle('solid', solid);
+  }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
 
   // Reveal on scroll
-  const revealTargets = document.querySelectorAll(
-    '.content-section, .content-section-dark, .feature-item, .gallery-item'
-  );
+  const targets = document.querySelectorAll('.content-section, .content-section-dark, .feature-item, .gallery-item');
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
   }, { threshold: 0.12 });
-  revealTargets.forEach(el => io.observe(el));
+  targets.forEach(el => io.observe(el));
 
-  // Hero spotlight (AI vibe)
+  // Hero spotlight
   document.addEventListener('mousemove', (e) => {
     document.documentElement.style.setProperty('--mx', e.clientX + 'px');
     document.documentElement.style.setProperty('--my', e.clientY + 'px');
   }, { passive: true });
 
-  // ----- Lightbox with navigation -----
+  // Lightbox with navigation
   const dlg = document.getElementById('lightbox');
   const dlgImg = dlg.querySelector('img');
   const closeBtn = dlg.querySelector('.lightbox-close');
@@ -35,10 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const counter = dlg.querySelector('.lightbox-count');
 
   const imgs = [...document.querySelectorAll('.gallery-item img')];
-  imgs.forEach((img, i) => {
-    img.dataset.idx = i;
-    img.addEventListener('click', () => open(i));
-  });
+  imgs.forEach((img, i) => { img.dataset.idx = i; img.addEventListener('click', () => open(i)); });
 
   let idx = 0;
   function set(i){
@@ -59,13 +59,9 @@ document.addEventListener('DOMContentLoaded', () => {
   rightZone.addEventListener('click', () => next());
   leftZone.addEventListener('click', () => prev());
   closeBtn.addEventListener('click', () => dlg.close());
-
-  // close when clicking outside content
   dlg.addEventListener('click', (e) => {
     if (!e.target.closest('img, .lightbox-nav, .lightbox-close, .hotzone, .lightbox-meta')) dlg.close();
   });
-
-  // keyboard support
   window.addEventListener('keydown', (e) => {
     if (!dlg.open) return;
     if (e.key === 'ArrowRight') next();
