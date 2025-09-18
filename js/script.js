@@ -27,30 +27,39 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { passive: true });
 
   // --- Hero cross‑fade: main1.jpg -> housegarage.jpg ---
-  (function heroSwap(){
-    const box = document.querySelector('.hero-image-container');
-    if (!box) return;
-    const imgs = box.querySelectorAll('img.bg'); // expects .bg.bg-1 and .bg.bg-2 in HTML
-    if (imgs.length < 2) return;
+  // --- Hero cross-fade: main1.jpg -> housegarage.jpg (slower) ---
+(function heroSwap(){
+  const box = document.querySelector('.hero-image-container');
+  if (!box) return;
 
-    let ready = 0;
-    const mark = () => {
-      ready += 1;
-      if (ready === imgs.length) {
-        // show main1 briefly, then fade to housegarage
-        setTimeout(() => box.classList.add('swap'), 1400);
-      }
-    };
+  // expects two imgs with classes: img.bg.bg-1 (main1) and img.bg.bg-2 (housegarage)
+  const imgs = box.querySelectorAll('img.bg');
+  if (imgs.length < 2) return;
 
-    imgs.forEach(img => {
-      if (img.decode) img.decode().then(mark, mark);
-      else if (img.complete) mark();
-      else img.addEventListener('load', mark, { once:true });
-    });
+  // Tunable timings (ms)
+  const initialShow = 3000; // how long main1 stays fully visible before fading
+  const safetyMax = 7000;   // fallback if images don't decode
 
-    // safety: ensure swap even if decode/load stalls
-    setTimeout(() => box.classList.add('swap'), 4000);
-  })();
+  let ready = 0;
+  const mark = () => {
+    ready += 1;
+    if (ready === imgs.length) {
+      // wait initialShow then trigger CSS swap (which uses 1600ms transition)
+      setTimeout(() => box.classList.add('swap'), initialShow);
+    }
+  };
+
+  imgs.forEach(img => {
+    // try to use modern decode() for best UX
+    if (img.decode) img.decode().then(mark, mark);
+    else if (img.complete) mark();
+    else img.addEventListener('load', mark, { once: true });
+  });
+
+  // safety: ensure swap even if decode/load stalls
+  setTimeout(() => box.classList.add('swap'), Math.max(initialShow, safetyMax));
+})();
+
   // --- end hero cross‑fade ---
 
   // Lightbox with navigation
