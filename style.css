@@ -23,6 +23,13 @@ body{
   line-height:1.6;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+  display: block; /* Removes extra space below images */
+}
+
+
 .container{max-width:1100px;margin-inline:auto;padding-inline:2rem}
 .container.narrow{max-width:980px}
 
@@ -234,4 +241,70 @@ dialog#lightbox::backdrop{background:rgba(0,0,0,.6)}
 /* Reduced motion */
 @media (prefers-reduced-motion:reduce){
   *{transition:none !important;animation:none !important}
+}
+
+/* ============================================= */
+/* ===== MOBILE RESPONSIVE STYLES (STEP 3) ===== */
+/* ============================================= */
+
+@media (max-width: 768px) {
+
+  /* --- GENERAL LAYOUT --- */
+  /* Make page scroll-padding smaller for the new mobile header height */
+  html {
+    scroll-padding-top: 150px; 
+  }
+
+  /* Reduce side padding on containers to maximize screen space */
+  .container {
+    padding-inline: 1rem;
+  }
+
+  /* --- HEADER & NAVIGATION --- */
+  /* Allow the header to grow in height and stack its content */
+  .main-header {
+    position: fixed; /* Keep it fixed on mobile */
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    
+    /* Change the trigger for the solid background to be immediate */
+    background: rgba(255, 255, 255, .95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(15, 61, 46, .08);
+  }
+
+  /* Make header text dark by default on mobile */
+  .main-header .logo,
+  .main-header .main-nav a,
+  .main-header .lang-switcher a {
+    color: var(--ink);
+  }
+  
+  /* --- HERO SECTION --- */
+  /* Reduce the size of the main headline */
+  h1 {
+    font-size: 2.5rem; /* Adjust as you see fit */
+    line-height: 1.2;
+  }
+
+  /* --- GALLERY GRIDS --- */
+  /* This is the most important fix for your collapsing components. */
+  .gallery-grid {
+    /* Force the grid into a single column on mobile screens */
+    grid-template-columns: 1fr;
+    gap: 1rem; /* Add a bit more space between stacked images */
+  }
+
+  /* --- TYPOGRAPHY & SECTIONS --- */
+  /* Adjust heading sizes for better readability on small screens */
+  h2 {
+    font-size: 2.1rem;
+  }
+
+  .content-section {
+    padding: 3rem 0;
+  }
 }
