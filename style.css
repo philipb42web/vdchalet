@@ -42,17 +42,42 @@ img {
   transition:top .25s ease, background .25s ease, color .25s ease;
 }
 
+/* header grid placement + flush left */
+.main-header > .brand{justify-self:start;width:max-content}
+.main-header > .main-nav{justify-self:center}
+.main-header > .lang-switcher{justify-self:end}
+
+/* remove the left indent so brand sits at the corner */
+.main-header{padding-left:0}
+
+
 .logo {
   justify-self: start;
   display: grid;
-  justify-items: center;
+  justify-items: start;
 
   font-family: 'Alex Brush', cursive;
   font-weight: 800;
-  font-size: 1.5rem;  
+  font-size: 1.2rem;  
   line-height: 1;
 }
 .main-nav{ justify-self:center; margin:0 }
+
+.main-header nav.main-nav ul{
+  display:flex;
+  gap:1.25rem;
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+.main-header nav.main-nav a{
+  text-decoration:none;
+  font-weight:600;
+  color:#fff;
+}
+
+
+
 .main-nav ul{ display:flex; gap:1.25rem; list-style:none; margin:0; padding:0; justify-content:center }
 .lang-switcher{ justify-self:end; display:flex; align-items:center; gap:.5rem; margin:0 }
 
@@ -60,16 +85,19 @@ img {
   font-weight: 600;
 }
 
-/* brand stack: svg above text logo */
+
+/* brand stack: svg above text logo (centered) */
+/* brand stack: svg above text logo (left-corner brand, centered word under icon) */
 .brand{display:flex;flex-direction:column;align-items:flex-start;gap:0}
-.brand-link{line-height:0}                           /* kills inline whitespace */
+.brand-link{display:inline-flex;flex-direction:column;align-items:center;line-height:0}
 .brand-badge{
   width:clamp(92px,11vw,176px);
-  height:auto;display:block;margin-bottom:-10px;     /* pulls text upward */
-  filter:drop-shadow(0 2px 6px rgba(0,0,0,.35))
+  height:auto;display:block;margin-inline:auto;margin-bottom:-28px;
+  filter:drop-shadow(0 2px 6px rgba(0,0,0,.35));
 }
-.brand .logo{display:block;margin:0;line-height:1;transform:translateY(-4px);text-align:left}
-
+.brand .logo{
+  display:block;margin:0;line-height:1;text-align:center;transform:translateY(-4px); align-self:center;
+}
 
 
 
